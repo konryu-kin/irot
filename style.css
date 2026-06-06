@@ -1,0 +1,38 @@
+html, body {
+  margin: 0 ;
+}
+
+#angle{
+  width:95vw;
+  margin:0px;
+}
+#canvas{
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100vw;
+  margin:0px;
+}
+#video{
+  height:0px;
+}
+p{
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color:white;
+  font-size: 2rem;
+  margin:0px;
+}
+#irot_text{
+  position:absolute;
+  top:10px;
+  left:10px;
+  margin:0px;
+}
+#angle_selector{
+  position:absolute;
+  top:480px;
+  left:5px;
+  margin:1px;
+}

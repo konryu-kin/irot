@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="canvasPreview">
+    </div>
+    <p id= "irot_text">irot　色相を回転させるカメラ</p>
+    <div id="videoPreview">
+      <video id="video" autoplay muted playsinline></video>
+    </div>
+    <div id = "angle_selector">
+      <input type="range" id="angle" min="0" max="360" />
+      <p id ="angleValue"></p>
+    </div>
+    
+<script src="./main.js"></script>
+
+  </body>
+</html>
