@@ -1,14 +1,16 @@
 //入力バー
-const value = document.querySelector("#angleValue");
-const input = document.querySelector("#angle");
-value.textContent = `回転[°]:${input.value}`;
+const value = document.querySelector("#angle_value");
+const input = document.querySelector("#angleInput");
+value.textContent = `${localStorage.angle_value}°`;
 input.addEventListener("input", (event) => {
-  value.textContent = `回転[°]:${event.target.value}`;
+  setTimeout(()=>{
+    value.textContent = `${localStorage.angle_value}°`;
+  },200)
   localStorage.angle_value = event.target.value;
 });
 if(localStorage.angle_value){
   input.value = Number(localStorage.angle_value);
-  value.textContent = `回転[°]:${localStorage.angle_value}`;
+  value.textContent = ` ${localStorage.angle_value}°`;
 }
 
 const cameraSize = { w: 360, h: 240 };
@@ -39,7 +41,7 @@ media = navigator.mediaDevices.getUserMedia({
 // canvas要素をつくる
 canvas        = document.createElement('canvas');
 canvas.id     = 'canvas';
-document.getElementById('canvasPreview').appendChild(canvas);
+document.getElementById('resultDisplay').appendChild(canvas);
 
 // コンテキストを取得する
 canvasCtx = canvas.getContext('2d');
@@ -61,7 +63,7 @@ function canvasUpdate() {
 function rotateColor(){
   const imageData = canvasCtx.getImageData(0, 0, canvas.width, canvas.height);
   const pixel = imageData.data;
-  const angle = document.getElementById("angle").value;
+  const angle = document.getElementById("angleInput").value;
   const N = [1,1,1].map((x)=>x/Math.sqrt(3));
   for (let i = 0; i < pixel.length; i += 4) {
     const afterColorRGB = Rodrigues(N, [pixel[i], pixel[i+1], pixel[i+2]], Math.PI*angle/180);

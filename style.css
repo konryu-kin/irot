@@ -1,38 +1,132 @@
-html, body {
-  margin: 0 ;
+:root{
+  --primary:#444;
+  --accent:#11E4D2;
 }
 
-#angle{
-  width:95vw;
-  margin:0px;
-}
-#canvas{
-  position:absolute;
-  top:0px;
-  left:0px;
+html, body {
+  margin: 0 ;
   width:100vw;
-  margin:0px;
+  overflow-x: hidden;
+  font-family: "WDXL Lubrifont JP N", sans-serif;
 }
-#video{
-  height:0px;
-}
-p{
-  font-family: "Noto Sans JP", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  color:white;
-  font-size: 2rem;
-  margin:0px;
-}
-#irot_text{
+
+#irot_logo{
   position:absolute;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding:0 16px;
   top:10px;
   left:10px;
   margin:0px;
+
+  height:40px;
+  border-radius: 8px;
+  background-color: rgba(255,255,255,0.3);
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+
+  z-index:10;
+}
+#logo_text{
+  margin-left:8px;
+  color:var(--primary)
+}
+#videoPreview{
+  position:absolute;
+  width:40px;
+  height:40px;
+  top:10px;
+  right:10px;
+  z-index:5;
+  opacity: 0.001;
+}
+#video{
+  width:100%;
+  height:100%;
+}
+
+#resultDisplay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+#canvas{
+  position:relative;
+  height:100vh;
+  margin:0px;
+}
+
+#angle_board{
+  position:fixed;
+  bottom:32px;
+  left:0;
+  width:100vw;
+  z-index:5;
+}
+#angle_display{
+  position:relative;
+  left:5vw;
+  width:80px;
+  height:64px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  padding:4px;
+  padding-left:8px;
+  margin-bottom: 16px;
+}
+#angle_title{
+  font-size: 16px;
+  color:white;
+  margin:0;
+}
+#angle_value{
+  font-size: 40px;
+  color:white;
+  margin:0;
 }
 #angle_selector{
-  position:absolute;
-  top:480px;
-  left:5px;
-  margin:1px;
+  width:100%;
+}
+/* 
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+} */
+#angleInput{
+  position:relative;
+  display: block;
+  width:90vw;
+  left:5vw;
+
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+#angleInput::-webkit-slider-runnable-track{
+  height:20px;
+  border-radius:2px;
+  border:2px solid var(--primary);
+}
+#angleInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  margin-top:-5px;
+  background-color: rgba(17, 228, 210, 0.4);
+  outline:4px solid var(--accent);
+  border-radius: 2px;
 }
