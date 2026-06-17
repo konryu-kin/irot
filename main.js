@@ -84,6 +84,7 @@ function Rodrigues(N, R, T){
 }
 function debug(){
   alert(`
+    ver2
     display: ${document.getElementById("resultDisplay").getBoundingClientRect().width}
     canvas: ${document.getElementById("canvas").getBoundingClientRect().width}
   `)
