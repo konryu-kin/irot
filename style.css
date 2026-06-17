@@ -75,10 +75,20 @@ html, body {
   left:5vw;
   width:80px;
   height:64px;
-  background-color: rgba(0, 0, 0, 0.4);
+  clip-path: polygon(
+    8px 0, 
+    calc(100% - 8px) 0, 
+    100% 8px, 
+    100% calc(100% - 8px), 
+    calc(100% - 8px) 100%, 
+    8px 100%, 
+    0 calc(100% - 8px), 
+    0 8px
+  );
+  background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(4px);
   padding:4px;
-  padding-left:8px;
+  padding-left:16px;
   margin-bottom: 16px;
 }
 #angle_title{
@@ -94,15 +104,6 @@ html, body {
 #angle_selector{
   width:100%;
 }
-/* 
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  outline: none;
-  background: transparent;
-  cursor: pointer;
-  width: 100%;
-} */
 #angle_input{
   position:relative;
   display: block;
@@ -122,6 +123,24 @@ input[type="range"] {
   border:2px solid var(--primary);
 }
 #angle_input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  margin-top:-5px;
+  background-color: rgba(17, 228, 210, 0.4);
+  outline:4px solid var(--accent);
+  border-radius: 2px;
+}
+/* Track: Firefox */
+input[type="range"]::-moz-range-track {
+  height:20px;
+  border-radius:2px;
+  border:2px solid var(--primary);
+}
+ 
+/* Thumb: Firefox */
+input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
   height: 24px;
