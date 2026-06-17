@@ -102,7 +102,7 @@ input[type="range"] {
   cursor: pointer;
   width: 100%;
 } */
-#angleInput{
+#angle_input{
   position:relative;
   display: block;
   width:90vw;
@@ -115,12 +115,12 @@ input[type="range"] {
   backdrop-filter: blur(4px);
   cursor: pointer;
 }
-#angleInput::-webkit-slider-runnable-track{
+#angle_input::-webkit-slider-runnable-track{
   height:20px;
   border-radius:2px;
   border:2px solid var(--primary);
 }
-#angleInput::-webkit-slider-thumb {
+#angle_input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   height: 24px;

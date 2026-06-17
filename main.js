@@ -1,19 +1,17 @@
 //入力バー
 const value = document.querySelector("#angle_value");
-const input = document.querySelector("#angleInput");
-value.textContent = `${localStorage.angle_value}°`;
+const input = document.querySelector("#angle_input");
+value.textContent = `${localStorage.angleValue}°`;
 input.addEventListener("input", (event) => {
-  setTimeout(()=>{
-    value.textContent = `${localStorage.angle_value}°`;
-  },200)
-  localStorage.angle_value = event.target.value;
+  value.textContent = `${event.target.value}°`;
+  localStorage.angleValue = event.target.value;
 });
-if(localStorage.angle_value){
-  input.value = Number(localStorage.angle_value);
-  value.textContent = ` ${localStorage.angle_value}°`;
+if(localStorage.angleValue){
+  input.value = Number(localStorage.angleValue);
+  value.textContent = ` ${localStorage.angleValue}°`;
 }
 
-const cameraSize = { w: 360, h: 240 };
+const cameraSize = { w: 360*0.6, h: 240*0.6 };
 const canvasSize = { w: 360, h: 500 };
 const resolution = { w: 1080, h: 720 };
 let video;
@@ -63,7 +61,7 @@ function canvasUpdate() {
 function rotateColor(){
   const imageData = canvasCtx.getImageData(0, 0, canvas.width, canvas.height);
   const pixel = imageData.data;
-  const angle = document.getElementById("angleInput").value;
+  const angle = document.getElementById("angle_input").value;
   const N = [1,1,1].map((x)=>x/Math.sqrt(3));
   for (let i = 0; i < pixel.length; i += 4) {
     const afterColorRGB = Rodrigues(N, [pixel[i], pixel[i+1], pixel[i+2]], Math.PI*angle/180);
@@ -83,4 +81,10 @@ function VdotW(V,W){
 }
 function Rodrigues(N, R, T){
   return R.map((x,i)=>(R[i]*Math.cos(T) + (1-Math.cos(T))*VdotW(R,N)*N[i] + VcrossW(N,R)[i]*Math.sin(T)))
+}
+function debug(){
+  alert(`
+    display: ${document.getElementById("resultDisplay").getBoundingClientRect().width}
+    canvas: ${document.getElementById("canvas").getBoundingClientRect().width}
+  `)
 }
