@@ -11,9 +11,9 @@ if(localStorage.angleValue){
   value.textContent = ` ${localStorage.angleValue}°`;
 }
 
-const cameraSize = { w: 360*0.6, h: 240*0.6 };
+const cameraSize = { w: 360, h: 240 };
 const canvasSize = { w: 360, h: 500 };
-const resolution = { w: 1080, h: 720 };
+const resolution = { w: 1080*0.8, h: 720*0.8 };
 let video;
 let media;
 let canvas;
@@ -84,7 +84,7 @@ function Rodrigues(N, R, T){
 }
 function debug(){
   alert(`
-    ver2
+    ver3
     display: ${document.getElementById("resultDisplay").getBoundingClientRect().width}
     canvas: ${document.getElementById("canvas").getBoundingClientRect().width}
   `)
