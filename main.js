@@ -3,17 +3,23 @@ const value = document.querySelector("#angle_value");
 const input = document.querySelector("#angle_input");
 value.textContent = `${localStorage.angleValue}°`;
 input.addEventListener("input", (event) => {
-  value.textContent = `${event.target.value}°`;
+  change_angle_text(event.target.value);
   localStorage.angleValue = event.target.value;
 });
 if(localStorage.angleValue){
   input.value = Number(localStorage.angleValue);
   value.textContent = ` ${localStorage.angleValue}°`;
+  change_angle_text(localStorage.angleValue);
+}
+else{
+  localStorage.angleValue = 0
+  input.value = 0
+  change_angle_text(localStorage.angleValue);
 }
 
 const cameraSize = { w: 360, h: 240 };
 const canvasSize = { w: 360, h: 500 };
-const resolution = { w: 1080*0.8, h: 720*0.8 };
+const resolution = { w: 1080, h: 720 };
 let video;
 let media;
 let canvas;
@@ -81,6 +87,10 @@ function VdotW(V,W){
 }
 function Rodrigues(N, R, T){
   return R.map((x,i)=>(R[i]*Math.cos(T) + (1-Math.cos(T))*VdotW(R,N)*N[i] + VcrossW(N,R)[i]*Math.sin(T)))
+}
+function change_angle_text(n){
+  const value = document.querySelector("#angle_value");
+  value.textContent = `${n}°`;
 }
 function debug(){
   alert(`
